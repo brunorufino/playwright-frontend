@@ -12,7 +12,6 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-
       <Route
         path="/"
         element={
@@ -21,7 +20,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
