@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, isAuthenticated, DEMO_USER } from "../auth";
+import logo from "../img/logo.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -18,14 +19,11 @@ export default function Login() {
     setError("");
 
     const result = login(email, password);
-
     if (!result.ok) {
       setError(result.message);
       return;
     }
 
-    // “Remember me” aqui é só visual (o token já fica no localStorage),
-    // mas deixa um gancho legal pra automação depois.
     if (remember) localStorage.setItem("remember_me", "1");
     else localStorage.removeItem("remember_me");
 
@@ -34,18 +32,27 @@ export default function Login() {
 
   return (
     <div className="container" style={{ minHeight: "100vh", display: "grid", placeItems: "center" }}>
-      <div className="card" style={{ width: "min(520px, 100%)" }}>
+      <div className="card" style={{ width: "min(560px, 100%)" }}>
         <div className="cardHeader">
           <div className="row" style={{ justifyContent: "space-between" }}>
-            <div>
-              <div className="row" style={{ gap: 10 }}>
-                <span className="logoDot" />
-                <div>
-                  <div style={{ fontWeight: 800, letterSpacing: "-0.2px" }}>Stygma Automation</div>
-                  <div className="muted" style={{ fontSize: 12 }}>Painel de testes & automações</div>
-                </div>
+            <div className="row" style={{ gap: 12 }}>
+              <img
+                src={logo}
+                alt="Stygma System"
+                data-testid="login-logo"
+                style={{
+                  height: 38,
+                  width: "auto",
+                  display: "block",
+                  filter: "drop-shadow(0 10px 18px rgba(0,0,0,0.25))",
+                }}
+              />
+              <div>
+                <div style={{ fontWeight: 900, letterSpacing: "-0.2px" }}>Stygma Automation</div>
+                <div className="muted" style={{ fontSize: 12 }}>Painel de testes & automações</div>
               </div>
             </div>
+
             <span className="badge" data-testid="login-badge">Playwright-ready</span>
           </div>
         </div>

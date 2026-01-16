@@ -31,9 +31,7 @@ function statusBadge(status) {
 
 export default function Home() {
   const navigate = useNavigate();
-
-  // menu interno (ótimo pra testes E2E)
-  const [section, setSection] = useState("dashboard"); // dashboard | automations | runs | settings
+  const [section, setSection] = useState("dashboard");
   const [automations, setAutomations] = useState(() => loadAutomations());
 
   const [newName, setNewName] = useState("Smoke tests - nightly");
@@ -44,7 +42,6 @@ export default function Home() {
   useEffect(() => saveAutomations(automations), [automations]);
 
   const runs = useMemo(() => {
-    // dados fake (perfeito pra validar UI / seletores)
     return [
       { id: "r1", name: "Login - happy path", env: "staging", status: "PASSED", at: "há 3 min" },
       { id: "r2", name: "Checkout - regression", env: "prod", status: "FAILED", at: "há 1h" },
@@ -92,7 +89,6 @@ export default function Home() {
 
   return (
     <div className="layout">
-      {/* SIDEBAR */}
       <aside className="card sidebar">
         <div className="brand">
           <span className="logoDot" />
@@ -145,7 +141,6 @@ export default function Home() {
         </div>
       </aside>
 
-      {/* MAIN */}
       <main className="card">
         <div className="topbar">
           <div>
@@ -377,10 +372,6 @@ export default function Home() {
                     </tbody>
                   </table>
                 )}
-
-                <div className="muted" style={{ marginTop: 12, fontSize: 12 }}>
-                  Dica Playwright: você consegue criar, ligar/desligar e remover automações só usando os <code>data-testid</code>.
-                </div>
               </div>
             </div>
           )}
@@ -394,10 +385,6 @@ export default function Home() {
                 </div>
               </div>
               <div className="cardBody">
-                <p className="muted" style={{ marginTop: 0 }}>
-                  Aqui você poderia plugar futuramente um endpoint /api/runs. Por enquanto é mock.
-                </p>
-
                 <table className="table" data-testid="runs-table-full">
                   <thead>
                     <tr>
@@ -433,10 +420,6 @@ export default function Home() {
               <div className="card">
                 <div className="cardHeader"><div className="h2">Configurações</div></div>
                 <div className="cardBody">
-                  <p className="muted" style={{ marginTop: 0 }}>
-                    Essa seção é ótima pra testes E2E (toggles, selects, persistência).
-                  </p>
-
                   <label className="label">Ambiente padrão</label>
                   <select className="input" data-testid="settings-default-env" defaultValue="staging">
                     <option value="staging">staging</option>
@@ -469,13 +452,10 @@ export default function Home() {
               <div className="card">
                 <div className="cardHeader"><div className="h2">Sobre</div></div>
                 <div className="cardBody">
-                  <p className="muted" style={{ marginTop: 0 }}>
-                    Próximos passos pra virar “automação de verdade”:
-                  </p>
-                  <ul className="muted" style={{ lineHeight: 1.7 }}>
-                    <li>Adicionar um backend /api (runs, schedules, usuários)</li>
-                    <li>Executar Playwright no CI e publicar relatórios</li>
-                    <li>Criar um job scheduler (cron/queue) pra disparar testes</li>
+                  <ul className="muted" style={{ lineHeight: 1.7, marginTop: 0 }}>
+                    <li>Plugar um backend /api (runs, schedules)</li>
+                    <li>Rodar Playwright no CI e publicar relatórios</li>
+                    <li>Job scheduler (cron/queue) pra disparar testes</li>
                   </ul>
                   <div className="badge" data-testid="about-badge">Version: UI Mock v1</div>
                 </div>

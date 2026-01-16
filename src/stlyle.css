@@ -4,7 +4,6 @@
   --panel-2: rgba(255, 255, 255, 0.09);
   --text: rgba(255, 255, 255, 0.92);
   --muted: rgba(255, 255, 255, 0.68);
-  --muted-2: rgba(255, 255, 255, 0.5);
   --border: rgba(255, 255, 255, 0.10);
   --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
   --radius: 16px;
@@ -13,7 +12,6 @@
   --primary-2: #59d0ff;
   --danger: #ff4d6d;
   --ok: #34d399;
-  --warn: #fbbf24;
 
   --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji",
     "Segoe UI Emoji";
@@ -113,17 +111,19 @@ button, input, select { font-family: inherit; }
   color: var(--muted);
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
+.table { width: 100%; border-collapse: collapse; }
 .table th, .table td {
   text-align: left;
   padding: 10px 8px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   color: var(--muted);
 }
-.table th { color: rgba(255,255,255,0.78); font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; }
+.table th {
+  color: rgba(255,255,255,0.78);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
 
 .layout {
   display: grid;
@@ -133,9 +133,7 @@ button, input, select { font-family: inherit; }
 }
 @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
 
-.sidebar {
-  padding: 14px;
-}
+.sidebar { padding: 14px; }
 .brand {
   display: flex;
   align-items: center;
